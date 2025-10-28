@@ -11,7 +11,7 @@ from config import inforcer
 verifier = StaticTokenVerifier(
     tokens={
         inforcer.MCP_TOKEN: {
-            "client_id": "janneke@campai.nl",
+            "client_id": "testuser",
             "scopes": ["read:data", "write:data", "admin:users"]
         }
     },
@@ -119,4 +119,5 @@ def get_baselines() -> dict:
 
 if __name__ == "__main__":
     mcp.run(transport="http", host="127.0.0.1", port=8000)
+
 
