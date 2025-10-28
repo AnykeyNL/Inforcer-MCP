@@ -7,21 +7,21 @@ import ssl
 import urllib.request
 from config import inforcer
 
-// Create MCP Token Verifier
+# Create MCP Token Verifier
 verifier = StaticTokenVerifier(
     tokens={
         inforcer.MCP_TOKEN: {
-            "client_id": "testuser",
+            "client_id": inforcer.MCP_Username,
             "scopes": ["read:data", "write:data", "admin:users"]
         }
     },
     required_scopes=["read:data"]
 )
 
-// Create MCP Server, using the verifier
+# Create MCP Server, using the verifier
 mcp = FastMCP("Inforcer MCP Server", auth=verifier)
 
-// Add Inforcer API key to header
+# Add Inforcer API key to header
 signed_header = {
         "Inf-Api-Key": f"{inforcer.INF_API_KEY}",
         "Content-Type": "application/json"
@@ -119,5 +119,4 @@ def get_baselines() -> dict:
 
 if __name__ == "__main__":
     mcp.run(transport="http", host="127.0.0.1", port=8000)
-
 
